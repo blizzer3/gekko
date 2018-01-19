@@ -7,7 +7,7 @@ var config = {};
 //                          GENERAL SETTINGS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-config.debug = true; // for additional logging / debugging
+config.debug = false; // for additional logging / debugging
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                         WATCHING A MARKET
@@ -238,7 +238,7 @@ config.mailer = {
   enabled: false,       // Send Emails if true, false to turn off
   sendMailOnStart: true,    // Send 'Gekko starting' message if true, not if false
 
-  email: '',    // Your Gmail address
+  email: 'athroener@gmail.com',    // Your Gmail address
   muteSoft: true, // disable advice printout if it's soft
 
   // You don't have to set your password here, if you leave it blank we will ask it
@@ -262,9 +262,9 @@ config.mailer = {
   server: 'smtp.gmail.com',   // The name of YOUR outbound (SMTP) mail server.
   smtpauth: true,     // Does SMTP server require authentication (true for Gmail)
           // The following 3 values default to the Email (above) if left blank
-  user: '',       // Your Email server user name - usually your full Email address 'me@mydomain.com'
-  from: '',       // 'me@mydomain.com'
-  to: '',       // 'me@somedomain.com, me@someotherdomain.com'
+  user: 'athroener',       // Your Email server user name - usually your full Email address 'me@mydomain.com'
+  from: 'athroener@gmail.com',       // 'me@mydomain.com'
+  to: 'athroener@gmail.com',       // 'me@somedomain.com, me@someotherdomain.com'
   ssl: true,        // Use SSL (true for Gmail)
   port: '',       // Set if you don't want to use the default port
 }
