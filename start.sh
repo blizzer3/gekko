@@ -1,3 +1,3 @@
 #!/bin/bash
-/home/athroener/.nvm/nvm.sh
-npm start
+. ~/.nvm/nvm.sh
+DEBUG=false npm start
