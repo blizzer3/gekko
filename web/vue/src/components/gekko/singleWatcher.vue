@@ -5,6 +5,8 @@
       p Gekko doesn't know what whatcher this is...
     div(v-if='data')
       h2.contain Market Watcher
+      .contain
+        button(v-on:click="killGekko") Stop this market watcher
       .grd.contain
         h3 Market
         .grd-row
@@ -144,6 +146,9 @@ export default {
           return c;
         });
       })
+    },
+    killGekko: function(){
+      post('killGekko', {"id": this.data.id}, false);
     }
   }
 }

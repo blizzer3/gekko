@@ -105,7 +105,7 @@ Trader.prototype.getPortfolio = function(callback) {
     this.gdax.getAccounts(this.handleResponse('getPortfolio', cb));
   util.retryCustom(retryForever, _.bind(handler, this), _.bind(result, this));
   */
-  this.client.getBalance()
+  this.private.getBalance()
     .then(balances => this.mapBalances)
     .then(balances => callback(null, balances))
     .catch(err => callback(err, null));
@@ -133,7 +133,7 @@ Trader.prototype.getTicker = function(callback) {
   util.retryCustom(retryForever, _.bind(handler, this), _.bind(result, this));
   */
 
-  this.client.fetchTicker(this.pair).then(ticker => {
+  this.public.fetchTicker(this.pair).then(ticker => {
     console.log("Ticker", ticker);
     callback(null, { bid: ticker.bid, ask: ticker.ask })
   })
@@ -251,7 +251,7 @@ Trader.prototype.transformPair = function () {
 
 Trader.prototype.getTrades = function(since, callback, descending) {
 
-  this.client.fetchTrades(this.transformPair())
+  this.public.fetchTrades(this.transformPair())
     .then(trades => {
       return trades.map((trade) => {
         return {
