@@ -275,9 +275,12 @@ Trader.getCapabilities = function() {
     name: 'Cryptopia',
     slug: 'cryptopia',
     currencies: ['BTC'],
-    assets: ['ETN'],
+    assets: ['ETN', 'LINDA', 'PRL', 'WSX'],
     markets: [
       { pair: ['BTC', 'ETN'], minimalOrder: { amount: 0.00000001, unit: 'asset' } },
+      { pair: ['BTC', 'LINDA'], minimalOrder: { amount: 0.00000001, unit: 'asset' } },
+      { pair: ['BTC', 'PRL'], minimalOrder: { amount: 0.00000001, unit: 'asset' } },
+      { pair: ['BTC', 'WSX'], minimalOrder: { amount: 0.00000001, unit: 'asset' } },
     ],
     requires: ['key', 'secret'],
     tid: 'date',
