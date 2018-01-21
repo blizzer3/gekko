@@ -49,7 +49,7 @@ method.check = function() {
   var rsi = this.indicators.rsi;
   var rsiVal = rsi.result;
 
-  if(tsiVal > this.settings.TSI.up && ppoVal > this.settings.PPO.up && rsiVal > this.settings.thresholds.high) {
+  if(tsiVal > this.settings.TSI.up && ppoVal > this.settings.PPO.up && rsiVal > this.settings.RSI.high) {
 
     // new trend detected
     if(this.trend.direction !== 'high')
@@ -73,7 +73,7 @@ method.check = function() {
     } else
       this.advice();
 
-  } else if(tsiVal < this.settings.TSI.down && ppoVal < this.settings.PPO.down && rsiVal > this.settings.thresholds.low) {
+  } else if(tsiVal < this.settings.TSI.down && ppoVal < this.settings.PPO.down && rsiVal > this.settings.RSI.low) {
 
     // new trend detected
     if(this.trend.direction !== 'low')
