@@ -12,3 +12,8 @@ short = 13
 long = 25
 low = -25
 high = 25
+
+[RSI]
+interval = 14
+low = 30
+high = 70

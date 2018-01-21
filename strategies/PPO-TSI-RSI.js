@@ -22,6 +22,7 @@ method.init = function() {
   // define the indicators we need
   this.addIndicator('tsi', 'TSI', this.settings.TSI);
   this.addIndicator('ppo', 'PPO', this.settings.PPO);
+  this.addIndicator('rsi', 'RSI', this.settings.RSI);
 }
 
 // for debugging purposes log the last
@@ -29,9 +30,12 @@ method.init = function() {
 method.log = function(candle) {
   var digits = 8;
   var tsi = this.indicators.tsi;
-
+  var rsi = this.indicators.rsi;
+  var ppo = this.indicators.ppo;
   log.debug('calculated Ultimate Oscillator properties for candle:');
   log.debug('\t', 'tsi:', tsi.tsi.toFixed(digits));
+  log.debug('\t', 'rsi:', rsi.result.toFixed(digits));
+  log.debug('\t', 'ppo:', ppo.result.ppo.toFixed(digits));
   log.debug('\t', 'price:', candle.close.toFixed(digits));
 }
 
@@ -42,7 +46,10 @@ method.check = function() {
   var tsiVal = tsi.tsi;
   var ppoVal = ppo.PPOhist;
 
-  if(tsiVal > this.settings.TSI.up && ppoVal > this.settings.PPO.up) {
+  var rsi = this.indicators.rsi;
+  var rsiVal = rsi.result;
+
+  if(tsiVal > this.settings.TSI.up && ppoVal > this.settings.PPO.up && rsiVal > this.settings.thresholds.high) {
 
     // new trend detected
     if(this.trend.direction !== 'high')
@@ -66,7 +73,7 @@ method.check = function() {
     } else
       this.advice();
 
-  } else if(tsiVal < this.settings.TSI.down && ppoVal < this.settings.PPO.down) {
+  } else if(tsiVal < this.settings.TSI.down && ppoVal < this.settings.PPO.down && rsiVal > this.settings.thresholds.low) {
 
     // new trend detected
     if(this.trend.direction !== 'low')
