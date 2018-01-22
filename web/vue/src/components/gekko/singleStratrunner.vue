@@ -5,6 +5,8 @@
       p Gekko doesn't know what strat runner this is...
     div(v-if='data')
       h2.contain Strat runner
+      .contain
+        button(v-on:click="killGekko") Stop this strat runner
       .grd.contain
         .grd-row
           .grd-row-col-3-6
@@ -48,7 +50,7 @@
             template(v-if='!report')
               p
                 em Waiting for at least one trade..
-            template(v-if='report') 
+            template(v-if='report')
               .grd-row
                 .grd-row-col-3-6 Start balance
                 .grd-row-col-3-6 {{ round(report.startBalance) }}
@@ -65,7 +67,7 @@
                 .grd-row-col-3-6 Alpha
                 .grd-row-col-3-6 {{ round(report.alpha) }} {{ data.watch.currency }}
         p(v-if='watcher')
-          em This strat runner gets data from 
+          em This strat runner gets data from
             router-link(:to='"/live-gekkos/watcher/" + watcher.id') this market watcher
           | .
       template(v-if='!isLoading')
@@ -209,6 +211,9 @@ export default {
           return c;
         });
       })
+    },
+    killGekko: function(){
+      post('killGekko', {"id": this.data.id}, false);
     }
   }
 }
